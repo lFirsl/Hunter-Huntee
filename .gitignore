@@ -1,8 +1,13 @@
-.idea/
-Build/
+# Unity folders
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Oo]bj/
+[Ll]ibrary/
+[Tt]emp/
+[Uu]ser[Ss]ettings/
+
 Target/
-Logs/
-obj/
-Library/
+.idea/
+
 *.sln
-Temp/
