@@ -58,8 +58,8 @@ public class playScript : MonoBehaviour
     }
     void Motion()
     {
-        rb.velocity = ((Input.GetAxis("Vertical") * transform.forward) +
-                       (Input.GetAxis("Horizontal") * transform.right)).normalized * speed;
+        rb.velocity = ((Input.GetAxis("Vertical") * transform.forward * Time.deltaTime) +
+                       (Input.GetAxis("Horizontal") * transform.right * Time.deltaTime)).normalized * speed;
     }
 
     public void ChangeHealth(float damage)
