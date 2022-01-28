@@ -4,3 +4,4 @@ Target/
 Logs/
 obj/
 Library/
+*.sln
