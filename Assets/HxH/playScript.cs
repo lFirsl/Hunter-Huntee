@@ -58,11 +58,16 @@ public class playScript : MonoBehaviour
     }
     void Motion()
     {
+<<<<<<< HEAD
         // rb.velocity = ((Input.GetAxis("Vertical") * transform.forward * Time.deltaTime) +
         //                (Input.GetAxis("Horizontal") * transform.right * Time.deltaTime)).normalized * speed;
 
         rb.AddForce(transform.forward * speed * Input.GetAxis("Vertical"));
         rb.AddForce(transform.right * speed * Input.GetAxis("Horizontal"));
+=======
+        rb.velocity = ((Input.GetAxis("Vertical") * transform.forward * Time.deltaTime) +
+                       (Input.GetAxis("Horizontal") * transform.right * Time.deltaTime)).normalized * speed;
+>>>>>>> 0dbc8be (Delete and Ingore Library folder)
     }
 
     public void ChangeHealth(float damage)
