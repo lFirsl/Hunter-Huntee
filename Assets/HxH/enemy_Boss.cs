@@ -21,7 +21,8 @@ public class enemy_Boss : enemyScript
     // Start is called before the first frame update
     void Start()
     {
-        base.Start();     
+        base.Start();
+        
     }
 
     // Update is called once per frame
@@ -43,8 +44,8 @@ public class enemy_Boss : enemyScript
         particle.activate = true;
         particle.speed = particleSpeed;
     }
-    
-    
+
+
     public override void Active()
     {
         WalkTowardsPlayer();
@@ -57,7 +58,7 @@ public class enemy_Boss : enemyScript
             transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
         }
     }
-
+    
     public override void Passive()
     {
         RunAwayfromPlayer();
