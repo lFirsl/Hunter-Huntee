@@ -23,7 +23,7 @@ public class playScript : MonoBehaviour
     public bool walkSound;
 
     public float speed;
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     void Start()
     {
         aggressive = false;
@@ -39,6 +39,7 @@ public class playScript : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+
 
         Instance = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
@@ -131,8 +132,20 @@ public class playScript : MonoBehaviour
             StartCoroutine(activateHitbox());
             wolfAnim.SetTrigger("Attack");
 
+
+            //sound system below
+            //random number
+            System.Random rand = new System.Random();
+            int hold = rand.Next(1,3);
+
+            //will randomly switch between two attacking sound effects
+            if(hold == 1){
+                FindObjectOfType<audioManager>().Play("wolfAttack1");
+            }else{
+                FindObjectOfType<audioManager>().Play("wolfAttack2");
+            }
             //add wolf attack sound here
-            FindObjectOfType<audioManager>().Play("walk");
+            
         }
         //wolfAnim.SetBool("AtkVer",!wolfAnim.GetBool("AtkVer"));
     }
