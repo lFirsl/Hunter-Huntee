@@ -39,6 +39,9 @@ public class playScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        FindObjectOfType<audioManager>().Play("test.");
+
         Motion();
         if (Input.GetKeyUp(KeyCode.E))
         {
@@ -60,7 +63,7 @@ public class playScript : MonoBehaviour
         wolf.SetActive(aggressive);
         rab.SetActive(!aggressive);
 
-        FindObjectOfType<audioManager>().Play("intoWolf");
+        FindObjectOfType<audioManager>().Play("test");
 
     }
 
