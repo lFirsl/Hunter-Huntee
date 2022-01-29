@@ -56,7 +56,7 @@ public class playScript : MonoBehaviour
         else FindObjectOfType<audioManager>().Play("intoRab");
 
     }
-    }
+
     
     void Motion()
     {
