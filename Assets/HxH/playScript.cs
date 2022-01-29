@@ -10,12 +10,15 @@ public class playScript : MonoBehaviour
     public GameObject wolf;
     public GameObject rab;
     public GameObject character;
-    public float maxHealth = 100f;
+    private float maxHealth = 100f;
     public float currentHealth;
     private Animator rabAnim;
     private Animator wolfAnim;
     public bool aggressive;
+    
     public static playScript Instance;
+    public GameObject hitBoxObject;
+    private BoxCollider hitBox;
 
     public float speed;
     // Start is called before the first frame update
@@ -24,6 +27,8 @@ public class playScript : MonoBehaviour
         aggressive = false;
         rabAnim = rab.GetComponent<Animator>();
         wolfAnim = wolf.GetComponent<Animator>();
+        hitBox = hitBoxObject.GetComponent<BoxCollider>();
+        hitBox.enabled = false;
         SwitchForm();
         currentHealth = maxHealth;
         if (Instance != null)
@@ -107,9 +112,22 @@ public class playScript : MonoBehaviour
     {
         if (aggressive)
         {
+            StartCoroutine(activateHitbox());
             wolfAnim.SetTrigger("Attack");
         }
-        wolfAnim.SetBool("AtkVer",!wolfAnim.GetBool("AtkVer"));
+        //wolfAnim.SetBool("AtkVer",!wolfAnim.GetBool("AtkVer"));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerator activateHitbox()
+    {
+        hitBox.enabled = true;
+        yield return new WaitForSeconds(1);
+        hitBox.enabled = false;
     }
 
     public void ChangeHealth(float damage)
