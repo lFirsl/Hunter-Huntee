@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class playScript : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class playScript : MonoBehaviour
     public GameObject rab;
     public float maxHealth = 100f;
     public float currentHealth;
+    private bool aggressive;
 
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        wolf.SetActive(true);
-        rab.SetActive(false);
+        aggressive = false;
+        SwitchForm();
         currentHealth = maxHealth;
 
     }
@@ -25,36 +27,20 @@ public class playScript : MonoBehaviour
     void Update()
     {
         Motion();
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
         {
-            Switch();
+            SwitchForm();
             //Debug.Log("works");
         }
     }
 
 
-    void Switch()
+    void SwitchForm()
     {
-        if (wolf.activeSelf)
-        {
-            RabbitChange();
-        }
-        else
-        {
-            WolfChange();
-        }
-    }
-
-    void WolfChange()
-    {
-        rab.SetActive(false);
-        wolf.SetActive(true);
-    }
-
-    void RabbitChange()
-    {
-        rab.SetActive(true);
-        wolf.SetActive(false);
+        aggressive = !aggressive; //switch from Aggressive to Passive, or vice-versa
+        //if aggressive is true, turn to wolf. Otherwise, turn to rabbit.
+        wolf.SetActive(aggressive);
+        rab.SetActive(!aggressive);
     }
     void Motion()
     {

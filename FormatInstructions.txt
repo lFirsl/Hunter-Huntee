@@ -1,0 +1,10 @@
+/src/: The full source code with all assets of the project.
+• /release/: The distributable (.EXE) files including a README.TXT with full
+installation instructions.
+• /press/: One hi-res image called press.jpg to be used for GGJ PR (1024x768
+or better). Links to YouTube videos etc should be provided in a VIDEOS.TXT
+file. Do not try to upload raw video files!
+• /other/: Licensing information, game credits and contact information.
+• license.txt: This is a small text file with precisely the content described here
+(just copy-paste the complete contents of the Creative Commons licensing file
+provided into license.txt
