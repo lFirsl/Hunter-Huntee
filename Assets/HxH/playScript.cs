@@ -51,6 +51,11 @@ public class playScript : MonoBehaviour
         //if aggressive is true, turn to wolf. Otherwise, turn to rabbit.
         wolf.SetActive(aggressive);
         rab.SetActive(!aggressive);
+
+        if(aggressive) FindObjectOfType<audioManager>().Play("intoWolf");
+        else FindObjectOfType<audioManager>().Play("intoRab");
+
+    }
     }
     
     void Motion()
