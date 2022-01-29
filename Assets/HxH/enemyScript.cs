@@ -21,6 +21,7 @@ public class enemyScript : MonoBehaviour
     public float currentDistanceFromPlayer;
     public GameObject player;
     public playScript playerScript;
+    protected Rigidbody rb;
     
     [Header("Booleans")]
     public bool isAttacking = false;
@@ -33,6 +34,7 @@ public class enemyScript : MonoBehaviour
         currentCooldown = attackInterval;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<playScript>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -69,20 +71,21 @@ public class enemyScript : MonoBehaviour
     protected void LookTowardsPlayer()
     {
         Vector3 direction = playerPosition - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
+        direction = new Vector3(direction.x, 0.0f, direction.z);
+        Quaternion rotation = Quaternion.LookRotation(direction,Vector3.up);
         transform.rotation = rotation;
     }
     
     IEnumerator AttackCoroutine()
     {
-        Debug.Log(isAttacking);
+        //Debug.Log(isAttacking);
         //ANIM HERE
         //SFX HERE
         Attack();
         isAttacking = false;
         yield return new WaitForSeconds(5f); //Enter time finish for att anim
         
-        Debug.Log(isAttacking);
+        //Debug.Log(isAttacking);
     }
 
     public virtual void Attack() //This function can be over written for specific attacks

@@ -10,6 +10,9 @@ public class enemy_Rifleman : enemyScript
     public Transform bulletStartPos;
     public float bulletSpeed;
     public float kiteDist = 30;
+
+    public float shotCD = 1.0f;
+    private bool shot = false;
     
     
     // BULLETS
@@ -31,18 +34,29 @@ public class enemy_Rifleman : enemyScript
     {
         base.Update();
         LookTowardsPlayer();
-        
+        //WalkTowardsPlayer();
     }
 
     public override void Attack() //shoot
     {
         base.Attack();
         //Instantiate bullet and stuff now.
-        GameObject tmp = Instantiate(bullet);
-        bulletScript = tmp.GetComponent<bullet>();
-        tmp.transform.position = bulletStartPos.position;
-        bulletScript.activate = true;
-        bulletScript.speed = bulletSpeed;
+        if (!shot)
+        {
+            StartCoroutine(shoot());
+            GameObject tmp = Instantiate(bullet);
+            bulletScript = tmp.GetComponent<bullet>();
+            tmp.transform.position = bulletStartPos.position;
+            bulletScript.activate = true;
+            bulletScript.speed = bulletSpeed; 
+        }
+    }
+
+    IEnumerator shoot()
+    {
+        shot = true;
+        yield return new WaitForSeconds(shotCD);
+        shot = false;
     }
     public override void Active()
     {
@@ -51,9 +65,11 @@ public class enemy_Rifleman : enemyScript
     
     void WalkTowardsPlayer()
     {
+        Debug.Log("Walking");
         if (currentDistanceFromPlayer >= attDist)
         {
-            transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
+            rb.AddForce(transform.forward * movementSpeed * aggroModifier);
+            //transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
         }
     }
 
@@ -68,12 +84,12 @@ public class enemy_Rifleman : enemyScript
         if (currentDistanceFromPlayer >= kiteDist)
         {
             //Need to use velocity instead else ignores colliders and everything lol
-            transform.position += transform.forward * movementSpeed * Time.deltaTime;
+            rb.AddForce(transform.forward * movementSpeed * Time.deltaTime);
         }
 
         if (currentDistanceFromPlayer < kiteDist)
         {
-            transform.position += transform.forward * -movementSpeed * Time.deltaTime;
+            rb.AddForce(transform.forward * -movementSpeed * Time.deltaTime);
         }
     }
 }

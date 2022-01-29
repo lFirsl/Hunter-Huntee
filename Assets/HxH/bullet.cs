@@ -11,6 +11,8 @@ public class bullet : MonoBehaviour
     public Rigidbody rb;
     public BoxCollider bc;
     public bool activate; //Used to activate the Shoot command when called in rifleman script
+
+    private float destructTimer = 3.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,14 @@ public class bullet : MonoBehaviour
         {
             rb.velocity = transform.up * speed;
         }
+
+        StartCoroutine(selfDestruct());
+    }
+
+    IEnumerator selfDestruct()
+    {
+        yield return new WaitForSeconds(destructTimer);
+        Destroy(gameObject);
     }
 
 
