@@ -9,10 +9,13 @@ public class playScript : MonoBehaviour
     public Rigidbody rb;
     public GameObject wolf;
     public GameObject rab;
+    public GameObject character;
     public float maxHealth = 100f;
     public float currentHealth;
     public Animator rabAnim;
     public bool aggressive;
+
+    private GameObject* currentForm;
 
     public float speed;
     // Start is called before the first frame update
@@ -49,14 +52,26 @@ public class playScript : MonoBehaviour
     {
         // rb.velocity = ((Input.GetAxis("Vertical") * transform.forward * Time.deltaTime) +
         //                (Input.GetAxis("Horizontal") * transform.right * Time.deltaTime)).normalized * speed;
-
+        
+        //Get new force additions
         Vector3 verticalSpeed = transform.forward * speed * Input.GetAxis("Vertical");
         Vector3 horizontalSpeed = transform.right * speed * Input.GetAxis("Horizontal");
-
-        if (rb.velocity.magnitude > 0) rabAnim.SetTrigger("runTrigger");
-        else rabAnim.ResetTrigger("runTrigger");
+        //add force
         rb.AddForce(verticalSpeed);
         rb.AddForce(horizontalSpeed);
+
+        Vector3 movement = rb.velocity;
+        
+        //check whether to turn run animation on or off.
+        if (movement.magnitude > 0.01)
+        {
+            rabAnim.SetTrigger("runTrigger");
+            
+            //Correct rotation
+            character.transform.rotation =
+                Quaternion.LookRotation(new Vector3(movement.x, 0.0f, movement.z) * Time.deltaTime);
+        }
+        else rabAnim.ResetTrigger("runTrigger");
     }
 
     void setAnimation()

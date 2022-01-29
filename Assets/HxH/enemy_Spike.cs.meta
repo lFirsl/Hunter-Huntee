@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 769c25011b147154eaea4a208a5d5845
+=======
+guid: 553dda8b25753024b82f11655b60beff
+>>>>>>> 1f2d097 (smoothen player movement)
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
