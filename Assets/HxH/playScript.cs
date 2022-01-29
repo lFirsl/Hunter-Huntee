@@ -11,13 +11,15 @@ public class playScript : MonoBehaviour
     public GameObject rab;
     public float maxHealth = 100f;
     public float currentHealth;
-    private bool aggressive;
+    public Animator rabAnim;
+    public bool aggressive;
 
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
         aggressive = false;
+        rabAnim = rab.GetComponent<Animator>();
         SwitchForm();
         currentHealth = maxHealth;
 
@@ -32,6 +34,7 @@ public class playScript : MonoBehaviour
             SwitchForm();
             //Debug.Log("works");
         }
+        
     }
 
 
