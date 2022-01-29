@@ -78,9 +78,10 @@ public class enemyScript : MonoBehaviour
         Debug.Log(isAttacking);
         //ANIM HERE
         //SFX HERE
-        
-        yield return new WaitForSeconds(5f); //Enter time finish for att anim
+        Attack();
         isAttacking = false;
+        yield return new WaitForSeconds(5f); //Enter time finish for att anim
+        
         Debug.Log(isAttacking);
     }
 

@@ -41,6 +41,7 @@ public class enemy_Spike : enemyScript
     {
         if (currentDistanceFromPlayer >= attDist)
         {
+            
             transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
         }
     }
