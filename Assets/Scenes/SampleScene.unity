@@ -2070,9 +2070,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: test
+    clip: {fileID: 8300000, guid: 420b21bea3c3ac44aa5d8090efc50fab, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: intoWolf
     clip: {fileID: 8300000, guid: b264611ac6585544182c6166326b7183, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: intoRab
+    clip: {fileID: 8300000, guid: 722fa1f9e0887c04f837baf5789d2d79, type: 3}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
 --- !u!4 &941355572
 Transform:
