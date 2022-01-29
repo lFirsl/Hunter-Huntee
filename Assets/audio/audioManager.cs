@@ -18,6 +18,8 @@ public class audioManager : MonoBehaviour
             s.source.pitch = s.pitch;
         
             s.source.loop = s.loop;
+            s.source.playOnAwake = s.onAwake;
+
         }
     }
 
