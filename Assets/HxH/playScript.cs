@@ -40,8 +40,6 @@ public class playScript : MonoBehaviour
     void Update()
     {
 
-        FindObjectOfType<audioManager>().Play("test.");
-
         Motion();
         if (Input.GetKeyUp(KeyCode.E))
         {
@@ -62,8 +60,6 @@ public class playScript : MonoBehaviour
         //if aggressive is true, turn to wolf. Otherwise, turn to rabbit.
         wolf.SetActive(aggressive);
         rab.SetActive(!aggressive);
-
-        FindObjectOfType<audioManager>().Play("test");
 
     }
 
