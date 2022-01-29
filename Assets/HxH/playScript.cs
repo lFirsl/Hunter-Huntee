@@ -12,7 +12,8 @@ public class playScript : MonoBehaviour
     public GameObject character;
     public float maxHealth = 100f;
     public float currentHealth;
-    public Animator rabAnim;
+    private Animator rabAnim;
+    private Animator wolfAnim;
     public bool aggressive;
 
     public float speed;
@@ -21,6 +22,7 @@ public class playScript : MonoBehaviour
     {
         aggressive = false;
         rabAnim = rab.GetComponent<Animator>();
+        wolfAnim = wolf.GetComponent<Animator>();
         SwitchForm();
         currentHealth = maxHealth;
 
@@ -34,6 +36,10 @@ public class playScript : MonoBehaviour
         {
             SwitchForm();
             //Debug.Log("works");
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            attack();
         }
         
     }
@@ -66,18 +72,32 @@ public class playScript : MonoBehaviour
         //check whether to turn run animation on or off.
         if (movement.magnitude > 0.01)
         {
-            rabAnim.SetTrigger("runTrigger");
+            if (aggressive) wolfAnim.SetBool("runTrigger",true);
+            else rabAnim.SetTrigger("runTrigger");
             
             //Correct rotation
             character.transform.rotation =
                 Quaternion.LookRotation(new Vector3(movement.x, 0.0f, movement.z) * Time.deltaTime);
         }
-        else rabAnim.ResetTrigger("runTrigger");
+        else
+        {
+            if (aggressive) wolfAnim.SetBool("runTrigger",false);
+            else rabAnim.ResetTrigger("runTrigger");
+        }
     }
 
     void setAnimation()
     {
         rabAnim.SetTrigger("runTrigger");
+    }
+
+    void attack()
+    {
+        if (aggressive)
+        {
+            wolfAnim.SetTrigger("Attack");
+        }
+        wolfAnim.SetBool("AtkVer",!wolfAnim.GetBool("AtkVer"));
     }
 
     public void ChangeHealth(float damage)
