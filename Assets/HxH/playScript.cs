@@ -50,8 +50,18 @@ public class playScript : MonoBehaviour
         // rb.velocity = ((Input.GetAxis("Vertical") * transform.forward * Time.deltaTime) +
         //                (Input.GetAxis("Horizontal") * transform.right * Time.deltaTime)).normalized * speed;
 
-        rb.AddForce(transform.forward * speed * Input.GetAxis("Vertical"));
-        rb.AddForce(transform.right * speed * Input.GetAxis("Horizontal"));
+        Vector3 verticalSpeed = transform.forward * speed * Input.GetAxis("Vertical");
+        Vector3 horizontalSpeed = transform.right * speed * Input.GetAxis("Horizontal");
+
+        if (rb.velocity.magnitude > 0) rabAnim.SetTrigger("runTrigger");
+        else rabAnim.ResetTrigger("runTrigger");
+        rb.AddForce(verticalSpeed);
+        rb.AddForce(horizontalSpeed);
+    }
+
+    void setAnimation()
+    {
+        rabAnim.SetTrigger("runTrigger");
     }
 
     public void ChangeHealth(float damage)
