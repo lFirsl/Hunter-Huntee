@@ -58,7 +58,7 @@ public class playScript : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             attack();
-      }
+        }
         
     }
 
@@ -152,7 +152,7 @@ public class playScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     IEnumerator activateHitbox()
