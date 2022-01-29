@@ -115,7 +115,7 @@ public class playScript : MonoBehaviour
 
     IEnumerator startWalkSound(){
         walkSound = true;
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.45f);
         walkSound = false;
     }
 
@@ -130,6 +130,9 @@ public class playScript : MonoBehaviour
         {
             StartCoroutine(activateHitbox());
             wolfAnim.SetTrigger("Attack");
+
+            //add wolf attack sound here
+            FindObjectOfType<audioManager>().Play("walk");
         }
         //wolfAnim.SetBool("AtkVer",!wolfAnim.GetBool("AtkVer"));
     }
