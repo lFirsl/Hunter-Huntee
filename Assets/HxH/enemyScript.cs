@@ -7,47 +7,112 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class enemyScript : MonoBehaviour
 {
+    [Header("Statistics")]
     public float health;
     public float movementSpeed;
     public float attackInterval;
     public float damage = 20f;
-    private float currentCooldown;
+    public float attDist = 4f;
+    public float aggroModifier = 1.5f; //Speed modifier when enemies are in aggro state. 
     
+    [Header("References")]
+    private float currentCooldown;
+    public Vector3 playerPosition;
+    public float currentDistanceFromPlayer;
+    public GameObject player;
     public playScript playerScript;
     
+    [Header("Booleans")]
+    public bool isAttacking = false;
+    
+    
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        isAttacking = false;
         currentCooldown = attackInterval;
-        playScript playerScript = GameObject.Find("Player").GetComponent<playScript>();
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<playScript>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        if (currentCooldown <= 0)
+        playerPosition = player.transform.position;
+        currentDistanceFromPlayer = Vector3.Distance(transform.position, playerPosition);
+        
+        AttackSys(); //Handles the att coroutine and attack cooldowns. 
+        if (health <= 0) 
         {
-            Attack();
-            currentCooldown = attackInterval;
+            Die();
         }
-        else
+        
+        if (playerScript.aggressive && !isAttacking) //Makes it such that enemy cant move when attacking and only move after
         {
-            currentCooldown -= Time.deltaTime;
+            Passive();
         }
+        else if (!playerScript.aggressive && !isAttacking)
+        {
+            Active();
+        }
+    }
+
+    public virtual void AttackSys()
+    {
+        if (currentDistanceFromPlayer <= attDist)
+        {
+            isAttacking = true;
+            StartCoroutine(AttackCoroutine());
+        }
+    }
+
+    protected void LookTowardsPlayer()
+    {
+        Vector3 direction = playerPosition - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
+    }
+    
+    IEnumerator AttackCoroutine()
+    {
+        Debug.Log(isAttacking);
+        //ANIM HERE
+        //SFX HERE
+        
+        yield return new WaitForSeconds(5f); //Enter time finish for att anim
+        isAttacking = false;
+        Debug.Log(isAttacking);
+    }
+
+    public virtual void Attack() //This function can be over written for specific attacks
+    {
         
     }
 
-    public virtual void Attack()
+    public virtual void Active()
     {
-        currentCooldown = attackInterval;
+        //Override Aggro Behaviour here
     }
 
-    private void OnCollisionEnter(Collision coll)
+    public virtual void Passive()
+    {
+        //Override Passive Behaviour here
+    }
+
+    public void Die()
+    {
+        //Play Sfx
+        //Play DeathAnimation
+    }
+    
+    
+
+    /*private void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.GetComponent<playScript>() != null)
         {
             Debug.Log("collides");
             coll.gameObject.GetComponent<playScript>().ChangeHealth(damage);
         }
-    }
+    }*/
 }

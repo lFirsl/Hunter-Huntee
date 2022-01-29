@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class enemy_Spike : enemyScript
 {
-
+    private float kiteDist = 15f;
+        
     public enemy_Spike()
     {
         base.damage = 20f;
@@ -12,20 +13,52 @@ public class enemy_Spike : enemyScript
         base.attackInterval = 20f;
     }
     
-    // Start is called before the first frame update
     void Start()
     {
-        
+        base.Start();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        base.Update();
+        LookTowardsPlayer();
+    }
+    
+
+    public override void Active()
+    {
+        WalkTowardsPlayer();
     }
 
-    public override void Attack()
+    public override void Passive()
     {
-        
+        RunAwayfromPlayer();
     }
+
+    
+
+    void WalkTowardsPlayer()
+    {
+        if (currentDistanceFromPlayer >= attDist)
+        {
+            transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
+        }
+    }
+
+    void RunAwayfromPlayer()
+    {
+        //move such that the distance is equal to kiteDist
+        if (currentDistanceFromPlayer >= kiteDist)
+        {
+            //Need to use velocity instead else ignores colliders and everything lol
+            transform.position += transform.forward * movementSpeed * Time.deltaTime;
+        }
+
+        if (currentDistanceFromPlayer < kiteDist)
+        {
+            transform.position += transform.forward * -movementSpeed * Time.deltaTime;
+        }
+    }
+    
+  
 }
