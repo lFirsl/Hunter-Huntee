@@ -3631,7 +3631,7 @@ GameObject:
   - component: {fileID: 1677985698}
   - component: {fileID: 1677985697}
   m_Layer: 0
-  m_Name: gameManager
+  m_Name: audioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3652,12 +3652,17 @@ MonoBehaviour:
   sounds:
   - name: intoWolf
     clip: {fileID: 8300000, guid: b264611ac6585544182c6166326b7183, type: 3}
-    volume: 0
+    volume: 1
     pitch: 0
     source: {fileID: 0}
   - name: intoRab
     clip: {fileID: 8300000, guid: 722fa1f9e0887c04f837baf5789d2d79, type: 3}
-    volume: 0
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: test
+    clip: {fileID: 8300000, guid: 420b21bea3c3ac44aa5d8090efc50fab, type: 3}
+    volume: 1
     pitch: 0
     source: {fileID: 0}
 --- !u!4 &1677985698

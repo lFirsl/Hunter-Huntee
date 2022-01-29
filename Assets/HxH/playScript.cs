@@ -52,8 +52,7 @@ public class playScript : MonoBehaviour
         wolf.SetActive(aggressive);
         rab.SetActive(!aggressive);
 
-        if(aggressive) FindObjectOfType<audioManager>().Play("intoWolf");
-        else FindObjectOfType<audioManager>().Play("intoRab");
+        FindObjectOfType<audioManager>().Play("intoWolf");
 
     }
 
