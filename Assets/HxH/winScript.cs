@@ -30,8 +30,11 @@ public class winScript : MonoBehaviour
         if (other.GetComponent<playScript>())
         {
             Debug.Log("COLLIDED");
-            GameObject ob = GameObject.Find("LevelLoader");
-            ob.GetComponent<LevelLoaderScript>().LoadNextLevel();
+            if (GameObject.Find("LevelLoader"))
+            {
+                GameObject ob = GameObject.Find("LevelLoader");
+                ob.GetComponent<LevelLoaderScript>().LoadNextLevel();
+            }
         }
     }
 }

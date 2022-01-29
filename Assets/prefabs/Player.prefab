@@ -1072,6 +1072,7 @@ GameObject:
   - component: {fileID: 3636293014392808892}
   - component: {fileID: 3636293014392808867}
   - component: {fileID: 3636293014392808893}
+  - component: {fileID: 5944622548075775078}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1114,6 +1115,7 @@ MonoBehaviour:
   currentHealth: 0
   aggressive: 0
   hitBoxObject: {fileID: 3636293015392121804}
+  walkSound: 0
   speed: 50
 --- !u!54 &3636293014392808893
 Rigidbody:
@@ -1131,6 +1133,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &5944622548075775078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636293014392808866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3636293014445649145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,14 +3243,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0962bdca27eaca34aaa15f7fdf608faf, type: 3}
---- !u!4 &3636293015613071066 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400040, guid: 0962bdca27eaca34aaa15f7fdf608faf, type: 3}
-  m_PrefabInstance: {fileID: 3636293015613457522}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3636293015613358776 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100042, guid: 0962bdca27eaca34aaa15f7fdf608faf, type: 3}
+  m_PrefabInstance: {fileID: 3636293015613457522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3636293015613071066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400040, guid: 0962bdca27eaca34aaa15f7fdf608faf, type: 3}
   m_PrefabInstance: {fileID: 3636293015613457522}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &3636293014798140808
