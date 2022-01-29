@@ -39,7 +39,8 @@ public class bullet : MonoBehaviour
         yield return new WaitForSeconds(destructTimer);
         Destroy(gameObject);
     }
-
+    
+    
 
     private void OnTriggerEnter(Collider other)
     {
