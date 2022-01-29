@@ -20,11 +20,14 @@ public class playScript : MonoBehaviour
     public GameObject hitBoxObject;
     private BoxCollider hitBox;
 
+    public bool walkSound;
+
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
         aggressive = false;
+        walkSound = false;
         rabAnim = rab.GetComponent<Animator>();
         wolfAnim = wolf.GetComponent<Animator>();
         hitBox = hitBoxObject.GetComponent<BoxCollider>();
@@ -95,12 +98,25 @@ public class playScript : MonoBehaviour
             //Correct rotation
             character.transform.rotation =
                 Quaternion.LookRotation(new Vector3(movement.x, 0.0f, movement.z) * Time.deltaTime);
+
+            //play walking sound here
+            if(!walkSound){
+                StartCoroutine(startWalkSound());
+                FindObjectOfType<audioManager>().Play("walk");  
+            }  
         }
         else
         {
             if (aggressive) wolfAnim.SetBool("runTrigger",false);
             else rabAnim.ResetTrigger("runTrigger");
         }
+
+    }
+
+    IEnumerator startWalkSound(){
+        walkSound = true;
+        yield return new WaitForSeconds(0.6f);
+        walkSound = false;
     }
 
     void setAnimation()

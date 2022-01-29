@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
+  - name: walk
     clip: {fileID: 8300000, guid: 420b21bea3c3ac44aa5d8090efc50fab, type: 3}
     volume: 1
     pitch: 1
