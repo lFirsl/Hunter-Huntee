@@ -15,8 +15,6 @@ public class playScript : MonoBehaviour
     public Animator rabAnim;
     public bool aggressive;
 
-    private GameObject* currentForm;
-
     public float speed;
     // Start is called before the first frame update
     void Start()
