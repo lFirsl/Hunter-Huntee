@@ -15,6 +15,7 @@ public class playScript : MonoBehaviour
     private Animator rabAnim;
     private Animator wolfAnim;
     public bool aggressive;
+    public static playScript Instance;
 
     public float speed;
     // Start is called before the first frame update
@@ -25,7 +26,14 @@ public class playScript : MonoBehaviour
         wolfAnim = wolf.GetComponent<Animator>();
         SwitchForm();
         currentHealth = maxHealth;
+        if (Instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
+        Instance = this;
+        GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame

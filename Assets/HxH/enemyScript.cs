@@ -35,8 +35,6 @@ public class enemyScript : MonoBehaviour
             currentCooldown -= Time.deltaTime;
         }
         
-        
-        
     }
 
     public virtual void Attack()
