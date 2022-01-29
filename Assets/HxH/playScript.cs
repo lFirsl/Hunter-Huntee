@@ -6,26 +6,43 @@ using UnityEngine.Rendering;
 
 public class playScript : MonoBehaviour
 {
+    [Header("References")]
     public Rigidbody rb;
     public GameObject wolf;
     public GameObject rab;
     public GameObject character;
-    private float maxHealth = 100f;
-    public float currentHealth;
-    private Animator rabAnim;
-    private Animator wolfAnim;
-    public bool aggressive;
-    
-    public static playScript Instance;
     public GameObject hitBoxObject;
     private BoxCollider hitBox;
-
-    public bool walkSound;
-
+    
+    [Header("Numbers and State")]
+    public float maxHealth = 100f;
+    public float currentHealth;
     public float speed;
+    public bool aggressive;
+    [Tooltip("Current sanity points")]
+    public float sanityVar = 0;
+    [Tooltip("Sanity increment/Increment per second")] 
+    public float sanityInc;
+    [Tooltip("The number of sanity points gained per second")]
+    public float sanityCD;
+    public float currentSanityCD;
+    
+    
+    [Header("SFX and ANIM")]
+    private Animator rabAnim;
+    private Animator wolfAnim;
+    public bool walkSound;
+    
+    public static playScript Instance;
+
+
+
+    private float temp_cooldown;
+    
     //Start is called before the first frame update
     void Start()
     {
+        currentSanityCD = sanityCD;
         aggressive = false;
         walkSound = false;
         rabAnim = rab.GetComponent<Animator>();
@@ -48,8 +65,9 @@ public class playScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Motion();
+        SanityCheck();
+        Debug.Log(sanityVar);
         if (Input.GetKeyUp(KeyCode.E))
         {
             SwitchForm();
@@ -59,9 +77,38 @@ public class playScript : MonoBehaviour
         {
             attack();
         }
-        
+
     }
 
+    void SanityCheck() //Increments/Decrements sanity bar
+    {
+        if (aggressive)
+        {
+            if (currentSanityCD <= 0)
+            {
+                sanityVar += sanityInc;
+                currentSanityCD = sanityCD;
+            }
+            else
+            {
+                currentSanityCD -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            if (currentSanityCD <= 0)
+            {
+                sanityVar -= sanityInc;
+                currentSanityCD = sanityCD;
+            }
+            else
+            {
+                currentSanityCD -= Time.deltaTime;
+            }
+        }
+    }
+    
+    
 
     void SwitchForm()
     {
