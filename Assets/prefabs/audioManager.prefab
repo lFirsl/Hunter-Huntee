@@ -91,6 +91,13 @@ MonoBehaviour:
     loop: 0
     onAwake: 0
     source: {fileID: 7200254729540879769}
+  - name: pikesmack
+    clip: {fileID: 8300000, guid: b22bb462c070fd54faa2474b4a34043d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    onAwake: 0
+    source: {fileID: 7200254729540879769}
 --- !u!82 &4316148956331382914
 AudioSource:
   m_ObjectHideFlags: 0
