@@ -18,7 +18,8 @@ public class SanityBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tmp_rotation = 0.55f * playerScript.sanityVar;
+        //tmp_rotation = 0.55f * playerScript.sanityVar;
         //transform.SetPositionAndRotation(transform.position, Quaternion.AngleAxis());
+        pivot.eulerAngles = new Vector3(0, 0, -playerScript.sanityVar * 0.55f);
     }
 }
