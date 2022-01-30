@@ -45,13 +45,12 @@ public class playScript : MonoBehaviour
     void Start()
     {
         currentSanityCD = sanityCD;
-        aggressive = false;
+        aggressive = true;
         walkSound = false;
         rabAnim = rab.GetComponent<Animator>();
         wolfAnim = wolf.GetComponent<Animator>();
         hitBox = hitBoxObject.GetComponent<BoxCollider>();
         hitBox.enabled = false;
-        SwitchForm();
         currentHealth = maxHealth;
         if (Instance != null)
         {
@@ -122,7 +121,7 @@ public class playScript : MonoBehaviour
         rab.SetActive(!aggressive);
 
         if(aggressive)FindObjectOfType<audioManager>().Play("intoWolf");
-        else FindObjectOfType<audioManager>().Play("intoRab");
+        else if(!aggressive) FindObjectOfType<audioManager>().Play("intoRab");
 
     }
 
