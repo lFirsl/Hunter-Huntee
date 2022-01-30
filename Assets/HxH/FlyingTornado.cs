@@ -12,7 +12,7 @@ public class FlyingTornado : MonoBehaviour
     public ParticleSystem particle;
     public BoxCollider bc;
     public Rigidbody rb;
-    private float destructTimer = 3.0f;
+    private float destructTimer = 8.0f;
     void Start()
     {
         activate = false;

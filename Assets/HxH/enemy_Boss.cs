@@ -43,8 +43,11 @@ public class enemy_Boss : enemyScript
         tmp.transform.position = particleStartPos.position;
         particle.activate = true;
         particle.speed = particleSpeed;
+        
+        
     }
 
+    
 
     public override void Active()
     {
