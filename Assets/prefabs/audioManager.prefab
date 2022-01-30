@@ -54,30 +54,42 @@ MonoBehaviour:
     volume: 0.05
     pitch: 1
     loop: 0
+    onAwake: 0
     source: {fileID: 4316148956331382914}
   - name: intoWolf
     clip: {fileID: 8300000, guid: b264611ac6585544182c6166326b7183, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    onAwake: 0
     source: {fileID: 2420284065673776842}
   - name: intoRab
     clip: {fileID: 8300000, guid: 722fa1f9e0887c04f837baf5789d2d79, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    onAwake: 0
     source: {fileID: 6719217003239734638}
   - name: wolfAttack1
     clip: {fileID: 8300000, guid: 8db11a22670313f4dbb38ed8e5810f65, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    onAwake: 0
     source: {fileID: 2540508403404871698}
   - name: wolfAttack2
     clip: {fileID: 8300000, guid: 762fa19e250e6c94c8645215a534c474, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    onAwake: 0
+    source: {fileID: 7200254729540879769}
+  - name: bangGun
+    clip: {fileID: 8300000, guid: a36bcab5c176e964da3134fee03d8444, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    onAwake: 0
     source: {fileID: 7200254729540879769}
 --- !u!82 &4316148956331382914
 AudioSource:
