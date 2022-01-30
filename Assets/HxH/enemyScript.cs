@@ -15,6 +15,9 @@ public class enemyScript : MonoBehaviour
     public float attDist = 4f;
     public float aggroModifier = 1.5f; //Speed modifier when enemies are in aggro state. 
     
+    [Header("Internal Variables")]
+    private float rotProgress = -1f; //Keeps track of rotation progress.
+    
     [Header("References")]
     private float currentCooldown;
     public Vector3 playerPosition;
@@ -73,7 +76,8 @@ public class enemyScript : MonoBehaviour
         Vector3 direction = playerPosition - transform.position;
         direction = new Vector3(direction.x, 0.0f, direction.z);
         Quaternion rotation = Quaternion.LookRotation(direction,Vector3.up);
-        transform.rotation = rotation;
+        //transform.rotation = rotation;
+        this.transform.rotation = rotation;
     }
     
     IEnumerator AttackCoroutine()

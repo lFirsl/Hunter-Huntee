@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class enemy_Spike : enemyScript
 {
     private float kiteDist = 15f;
+    public float spikeDmg = 10f;
         
     public enemy_Spike()
     {
@@ -60,6 +62,16 @@ public class enemy_Spike : enemyScript
             transform.position += transform.forward * -movementSpeed * Time.deltaTime;
         }
     }
-    
-  
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Bullet collision");
+        if (other.CompareTag("Player"))
+        {
+            GameObject parent = other.transform.root.gameObject;
+            playScript ps = parent.GetComponent<playScript>();
+            if(!ps.aggressive) ps.ChangeHealth(spikeDmg);
+            Debug.Log("Spikemen collided with Player");
+        }
+    }
 }

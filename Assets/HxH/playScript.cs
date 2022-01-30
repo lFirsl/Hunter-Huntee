@@ -24,6 +24,8 @@ public class playScript : MonoBehaviour
     [Tooltip("Sanity increment/Increment per second")] 
     public float sanityInc;
     [Tooltip("The number of sanity points gained per second")]
+    public float sanityLimit;
+    [Tooltip("The upper and lower limit of sanity points")]
     public float sanityCD;
     public float currentSanityCD;
     
@@ -105,6 +107,9 @@ public class playScript : MonoBehaviour
                 currentSanityCD -= Time.deltaTime;
             }
         }
+
+        if (sanityVar > sanityLimit) sanityVar = sanityLimit;
+        else if (sanityVar < -sanityLimit) sanityVar = -sanityLimit;
     }
     
     
