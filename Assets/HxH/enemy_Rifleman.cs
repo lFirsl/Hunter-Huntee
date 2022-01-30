@@ -53,6 +53,10 @@ public class enemy_Rifleman : enemyScript
                 bulletScript.speed = bulletSpeed;
                 tmp.transform.position = bulletStartPos.position;
                 bulletScript.activate = true;
+
+                //sound of rifle being fired
+                FindObjectOfType<audioManager>().Play("bangGun");
+
             }
             else
             {
