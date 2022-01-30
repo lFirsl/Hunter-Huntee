@@ -67,11 +67,10 @@ public class playScript : MonoBehaviour
     {
         Motion();
         SanityCheck();
-        Debug.Log(sanityVar);
+        //Debug.Log(sanityVar);
         if (Input.GetKeyUp(KeyCode.E))
         {
             SwitchForm();
-            //Debug.Log("works");
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -201,15 +200,15 @@ public class playScript : MonoBehaviour
     {
         //throw new NotImplementedException();
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("projectile"))
         {
             //whoever is working on the HP system, do your thing
             Debug.Log("Player is hit!");
         }
-    }
+    }*/
 
     IEnumerator activateHitbox()
     {
@@ -218,6 +217,7 @@ public class playScript : MonoBehaviour
         hitBox.enabled = false;
     }
 
+    //Health is done by calling this funciton in other scripts
     public void ChangeHealth(float damage)
     {
         currentHealth -= damage;

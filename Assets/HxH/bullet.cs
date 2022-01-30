@@ -12,6 +12,7 @@ public class bullet : MonoBehaviour
     public BoxCollider bc;
     public bool activate; //Used to activate the Shoot command when called in rifleman script
 
+    public float bulletdmg = 5f; //bullet dmg
     private float destructTimer = 3.0f;
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,10 @@ public class bullet : MonoBehaviour
         Debug.Log("Bullet collision");
         if (other.CompareTag("Player"))
         {
+            GameObject parent = other.transform.root.gameObject;
+            playScript ps = parent.GetComponent<playScript>();
+            ps.ChangeHealth(bulletdmg);
+            Debug.Log("Collided with Player");
             Destroy(gameObject);
         }
         //code for destroying and anim.

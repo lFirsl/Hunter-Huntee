@@ -1112,11 +1112,16 @@ MonoBehaviour:
   wolf: {fileID: 5833866806691176135}
   rab: {fileID: 3636293015613358776}
   character: {fileID: 3636293014445649145}
-  currentHealth: 0
-  aggressive: 0
   hitBoxObject: {fileID: 3636293015392121804}
-  walkSound: 0
+  maxHealth: 100
+  currentHealth: 0
   speed: 50
+  aggressive: 0
+  sanityVar: 0
+  sanityInc: 0
+  sanityCD: 0
+  currentSanityCD: 0
+  walkSound: 0
 --- !u!54 &3636293014392808893
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2021,7 +2026,7 @@ GameObject:
   - component: {fileID: 5833866806691176129}
   m_Layer: 0
   m_Name: Werewolf_Final
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -24,6 +24,7 @@ public class winScript : MonoBehaviour
 {
     public Rigidbody rb;
     public BoxCollider bc;
+    public bool winConditionAchieved = false;
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +76,7 @@ public class winScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<playScript>())
+        if (other.GetComponent<playScript>() && winConditionAchieved)
         {
             Debug.Log("COLLIDED");
             UploadStats();
