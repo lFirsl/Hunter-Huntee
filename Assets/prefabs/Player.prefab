@@ -1336,12 +1336,12 @@ MonoBehaviour:
   wolf: {fileID: 5833866806691176135}
   rab: {fileID: 3636293015613358776}
   character: {fileID: 3636293014445649145}
-  maxHealth: 200
+  maxHealth: 150
   currentHealth: 0
-  speed: 120
+  speed: 20
   aggressive: 0
   sanityVar: 0
-  sanityInc: 0
+  sanityInc: 5
   sanityLimit: 120
   sanityCD: 0.2
   currentSanityCD: 0
