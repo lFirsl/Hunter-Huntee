@@ -13,9 +13,10 @@ public class enemy_Rifleman : enemyScript
 
     public float shotCD = 1.0f;
     private bool shot = false;
-    
-    
+
+
     // BULLETS
+    private int mag = 3;
     
     public enemy_Rifleman()
     {
@@ -43,12 +44,21 @@ public class enemy_Rifleman : enemyScript
         //Instantiate bullet and stuff now.
         if (!shot)
         {
-            StartCoroutine(shoot());
-            GameObject tmp = Instantiate(bullet);
-            bulletScript = tmp.GetComponent<bullet>();
-            bulletScript.speed = bulletSpeed; 
-            tmp.transform.position = bulletStartPos.position;
-            bulletScript.activate = true;
+            if (mag > 0)
+            {
+                StartCoroutine(shoot());
+                mag--;
+                GameObject tmp = Instantiate(bullet);
+                bulletScript = tmp.GetComponent<bullet>();
+                bulletScript.speed = bulletSpeed;
+                tmp.transform.position = bulletStartPos.position;
+                bulletScript.activate = true;
+            }
+            else
+            {
+                StartCoroutine(reload());
+                mag = 3;
+            }
         }
     }
 
@@ -56,6 +66,13 @@ public class enemy_Rifleman : enemyScript
     {
         shot = true;
         yield return new WaitForSeconds(shotCD);
+        shot = false;
+    }
+
+    IEnumerator reload()
+    {
+        shot = true;
+        yield return new WaitForSeconds(3); //time needed to reload
         shot = false;
     }
     public override void Active()
