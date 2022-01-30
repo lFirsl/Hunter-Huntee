@@ -54,6 +54,11 @@ public class bossScript : MonoBehaviour
             GetComponent<Animator>().SetBool("isStage2", true);
         }
 
+        if (currenthealth <= 0)
+        {
+            Destroy(this);
+        }
+        
         currenthealth -= dmg;
     }
 
@@ -121,21 +126,21 @@ public class bossScript : MonoBehaviour
             {
                 playScript ps = hitColliders.GetComponent<playScript>();
                 ps.ChangeHealth(basicAtt);
-                Debug.Log("Health is changed");
+                Debug.Log("Basic");
             }
         }
     }
 
     public void SweepAttack()
     {
-        Collider[] colInfo = Physics.OverlapSphere(sweepPoint.position, sweepRad);
+        Collider[] colInfo = Physics.OverlapSphere(attackPoint.position, sweepRad);
         foreach (var hitColliders in colInfo)
         {
             if (hitColliders.GetComponent<playScript>())
             {
                 playScript ps = hitColliders.GetComponent<playScript>();
                 ps.ChangeHealth(sweepAtt);
-                Debug.Log("Health is changed");
+                Debug.Log("Sweep");
             }
         }
     }
@@ -149,7 +154,7 @@ public class bossScript : MonoBehaviour
             {
                 playScript ps = hitColliders.GetComponent<playScript>();
                 ps.ChangeHealth(s2dmg);
-                Debug.Log("Health is changed");
+                Debug.Log("S2");
             }
         }
     } 
