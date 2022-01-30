@@ -1341,7 +1341,7 @@ MonoBehaviour:
   speed: 120
   aggressive: 0
   sanityVar: 0
-  sanityInc: 5
+  sanityInc: 0
   sanityLimit: 120
   sanityCD: 0.2
   currentSanityCD: 0

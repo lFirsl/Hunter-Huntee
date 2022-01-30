@@ -29,6 +29,7 @@ public class playScript : MonoBehaviour
     public bool canTransform;
     public float transformationCD = 4;
     private float doubletransformationCD;
+    private bool dead;
 
     public float damage;
     
@@ -57,6 +58,7 @@ public class playScript : MonoBehaviour
         walkSound = false;
         attacking = false;
         canTransform = true;
+        dead = false;
         doubletransformationCD = 2 * transformationCD;
         rabAnim = rab.GetComponent<Animator>();
         wolfAnim = wolf.GetComponent<Animator>();
@@ -77,16 +79,25 @@ public class playScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Motion();
-        SanityCheck();
-        //Debug.Log(sanityVar);
-        if (Input.GetKeyUp(KeyCode.E) && canTransform)
+        if (!dead)
         {
-            SwitchForm();
+            Motion();
+            SanityCheck();
+            //Debug.Log(sanityVar);
+            if (Input.GetKeyUp(KeyCode.E) && canTransform)
+            {
+                SwitchForm();
+            }
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                attack();
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (currentHealth <= 0)
         {
-            attack();
+            dead = true;
+            wolfAnim.SetTrigger("death");
+            rabAnim.SetTrigger("death");
         }
 
     }
@@ -243,7 +254,10 @@ public class playScript : MonoBehaviour
         }
         else if (other.CompareTag("pike"))
         {
-            if(!aggressive || !attacking) ChangeHealth(10);
+            float damage = 10;
+            if (!aggressive) ChangeHealth(damage/2);
+            else if(!attacking) ChangeHealth(damage);
+            
         }
     }
 
