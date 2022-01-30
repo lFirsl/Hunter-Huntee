@@ -85,7 +85,7 @@ MonoBehaviour:
     onAwake: 0
     source: {fileID: 7200254729540879769}
   - name: bangGun
-    clip: {fileID: 8300000, guid: a36bcab5c176e964da3134fee03d8444, type: 3}
+    clip: {fileID: 8300000, guid: b22bb462c070fd54faa2474b4a34043d, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0

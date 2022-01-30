@@ -97,7 +97,7 @@ public class enemyScript : MonoBehaviour
 
     public virtual void Attack() //This function can be over written for specific attacks
     {
-        
+        //Attack sound here
     }
 
     public virtual void Active()

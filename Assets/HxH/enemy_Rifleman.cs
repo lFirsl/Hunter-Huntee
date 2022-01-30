@@ -113,5 +113,6 @@ public class enemy_Rifleman : enemyScript
             rb.AddForce(transform.forward * -movementSpeed * Time.deltaTime);
         }
 
+
     }
 }
