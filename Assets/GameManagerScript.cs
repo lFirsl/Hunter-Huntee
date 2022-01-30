@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -10,20 +11,30 @@ public class GameManagerScript : MonoBehaviour
 
     [Tooltip("The win condition game object")]
     public GameObject winGo;
+    public Spawner spawner;
     
     public int numOfEnemies;
     public int enemiesKilled;
-    
+    public int spawnStartTime;
+    public int spawnWait;
+
+    private int maxNumEnemies = 30;
     void Start()
     {
-        
         enemyScript[] enemies = FindObjectsOfType((typeof(enemyScript))) as enemyScript[];
-        foreach (enemyScript enemy in enemies)
-        {
-            Debug.Log(enemy.gameObject.name);
-            numOfEnemies += 1;
-        }
-
+        
+        spawner.enemies = enemies;
+        spawner.startTime = spawnStartTime;
+        spawner.spawnWait = spawnWait;
+        spawner.spawnMinWait = 2;
+        spawner.spawnMaxWait = 8;
+        spawner.numOfEnemies = numOfEnemies;
+        
+        GameObject playObject = FindObjectOfType<playScript>().gameObject;
+        //AVOID SPAWNING TOO CLOSE TO PLAYER
+        var position = playObject.transform.position;
+        spawner.spawnLimit = new Vector3(position.x + 3f, 0,
+                                            position.z + 3f);
         //THIS ONLY SETS THE NUMBER OF ENEMIES AT THE START
         //IF WE INSTANTIATE IN BOSS FIGHTS OR OTHER ENEMY TYPES
         //WE HAVE TO NOTIFY THIS GM GAMEOBJECT
@@ -33,6 +44,11 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (numOfEnemies > maxNumEnemies)
+            spawner.halt = true;
+        else
+            spawner.halt = false;
+        
         if (enemiesKilled == numOfEnemies)
         {
            //Debug.Log("Win condition achieved");
