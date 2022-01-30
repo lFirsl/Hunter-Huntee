@@ -1061,42 +1061,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: audioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b22bb462c070fd54faa2474b4a34043d, type: 3}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: a36bcab5c176e964da3134fee03d8444, type: 3}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.data[6].name
-      value: spikeSmack
-      objectReference: {fileID: 0}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.data[0].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.data[6].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.data[6].source
-      value: 
-      objectReference: {fileID: 828170003}
-    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-      propertyPath: sounds.Array.data[6].volume
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
 --- !u!1 &798960386
@@ -1195,11 +1159,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798960386}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!82 &828170003 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7200254729540879769, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
-  m_PrefabInstance: {fileID: 761020079}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &881939723
 GameObject:
   m_ObjectHideFlags: 0
