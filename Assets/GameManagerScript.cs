@@ -13,7 +13,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject winGo;
     public Spawner spawner;
     
-    public int numOfEnemies;
+    public int numOfEnemies = 8;
     public int enemiesKilled;
     public int spawnStartTime;
     public int spawnWait;
