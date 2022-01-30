@@ -29,7 +29,7 @@ public class LevelLoaderScript : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log ("Collided with: " + gameObject.tag);  // important debugging aid!
-        if (gameObject.CompareTag("sceneTrigger"))
+        if (gameObject.tag == "sceneTrigger")
         {
             trigger = true;
         }
