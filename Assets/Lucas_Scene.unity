@@ -6473,7 +6473,6 @@ MonoBehaviour:
   wolf: {fileID: 6718608948926205107}
   rab: {fileID: 4593092137705967820}
   character: {fileID: 4593092136739585677}
-  hitBoxObject: {fileID: 4593092137962873272}
   maxHealth: 100
   currentHealth: 0
   speed: 25
@@ -6483,7 +6482,9 @@ MonoBehaviour:
   sanityLimit: 120
   sanityCD: 0.1
   currentSanityCD: 0
+  attacking: 0
   walkSound: 0
+  hitBoxObject: {fileID: 4593092137962873272}
 --- !u!65 &4593092136762275800
 BoxCollider:
   m_ObjectHideFlags: 0

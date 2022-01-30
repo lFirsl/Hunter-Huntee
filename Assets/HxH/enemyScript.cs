@@ -17,6 +17,8 @@ public class enemyScript : MonoBehaviour
     
     [Header("Internal Variables")]
     private float rotProgress = -1f; //Keeps track of rotation progress.
+
+    public bool dead;
     
     [Header("References")]
     private float currentCooldown;
@@ -33,6 +35,7 @@ public class enemyScript : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
+        dead = false;
         isAttacking = false;
         currentCooldown = attackInterval;
         player = GameObject.Find("Player");
