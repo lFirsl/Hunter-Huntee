@@ -211,10 +211,15 @@ public class playScript : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Player was hit!");
         if (other.CompareTag("projectile"))
         {
-            //whoever is working on the HP system, do your thing
-            Debug.Log("Player is hit!");
+            // Debug.Log("Spikemen collided with Player");
+            // if(!aggressive || attacking) ps.ChangeHealth(spikeDmg);
+        }
+        else if (other.CompareTag("pike"))
+        {
+            if(!aggressive || !attacking) ChangeHealth(10);
         }
     }
 

@@ -41,36 +41,41 @@ public class enemy_Spike : enemyScript
 
     void WalkTowardsPlayer()
     {
-        if (currentDistanceFromPlayer >= attDist)
+        if (currentDistanceFromPlayer > aggroDistance) return;
+        else if (currentDistanceFromPlayer >= attDist)
         {
-            transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
+            rb.MovePosition(transform.position + transform.forward * movementSpeed * aggroModifier * Time.deltaTime);
         }
     }
 
     void RunAwayfromPlayer()
     {
+        if (currentDistanceFromPlayer > aggroDistance) return;
         //move such that the distance is equal to kiteDist
-        if (currentDistanceFromPlayer >= kiteDist)
+        else if (currentDistanceFromPlayer >= kiteDist)
         {
             //Need to use velocity instead else ignores colliders and everything lol
-            transform.position += transform.forward * movementSpeed * Time.deltaTime;
+            // transform.position += transform.forward * movementSpeed * Time.deltaTime;
+            rb.MovePosition(transform.position + transform.forward * movementSpeed *  Time.deltaTime);
+            
         }
 
-        if (currentDistanceFromPlayer < kiteDist)
+        else if (currentDistanceFromPlayer < kiteDist)
         {
-            transform.position += transform.forward * -movementSpeed * Time.deltaTime;
+            // transform.position += transform.forward * -movementSpeed * Time.deltaTime;
+            rb.MovePosition(transform.position - transform.forward * movementSpeed * Time.deltaTime);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Bullet collision");
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Spikemen collided with Player");
-            GameObject parent = other.transform.root.gameObject;
-            playScript ps = parent.GetComponent<playScript>();
-            if(!ps.aggressive || !ps.attacking) ps.ChangeHealth(spikeDmg);
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log("Bullet collision");
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         Debug.Log("Spikemen collided with Player");
+    //         GameObject parent = other.transform.root.gameObject;
+    //         playScript ps = parent.GetComponent<playScript>();
+    //         if(!ps.aggressive || !ps.attacking) ps.ChangeHealth(spikeDmg);
+    //     }
+    // }
 }

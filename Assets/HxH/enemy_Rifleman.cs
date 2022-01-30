@@ -87,10 +87,12 @@ public class enemy_Rifleman : enemyScript
     void WalkTowardsPlayer()
     {
         Debug.Log("Walking");
-        if (currentDistanceFromPlayer >= attDist)
+        if (currentDistanceFromPlayer > aggroDistance) return;
+        else if (currentDistanceFromPlayer >= attDist)
         {
             //rb.AddForce(transform.forward * movementSpeed * aggroModifier);
-            transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
+            rb.MovePosition(transform.position + transform.forward * movementSpeed * aggroModifier * Time.deltaTime);
+            //transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
         }
     }
 
@@ -102,17 +104,20 @@ public class enemy_Rifleman : enemyScript
     void RunAwayfromPlayer()
     {
         //move such that the distance is equal to kiteDist
-        if (currentDistanceFromPlayer >= kiteDist)
+        if (currentDistanceFromPlayer > aggroDistance) return;
+        else if (currentDistanceFromPlayer >= kiteDist)
         {
             //Need to use velocity instead else ignores colliders and everything lol
             //rb.AddForce(transform.forward * movementSpeed * Time.deltaTime);
-            transform.position += transform.forward * movementSpeed * Time.deltaTime;
+            //transform.position += transform.forward * movementSpeed * Time.deltaTime;
+            rb.MovePosition(transform.position + transform.forward * movementSpeed *  Time.deltaTime);
         }
 
-        if (currentDistanceFromPlayer < kiteDist)
+        else if (currentDistanceFromPlayer < kiteDist)
         {
             //rb.AddForce(transform.forward * -movementSpeed * Time.deltaTime);
-            transform.position += -transform.forward * movementSpeed * Time.deltaTime;
+            //transform.position += -transform.forward * movementSpeed * Time.deltaTime;
+            rb.MovePosition(transform.position - transform.forward * movementSpeed * Time.deltaTime);
         }
 
 

@@ -16,6 +16,7 @@ public class enemyScript : MonoBehaviour
     public float damage = 20f;
     public float attDist = 4f;
     public float aggroModifier = 1.5f; //Speed modifier when enemies are in aggro state. 
+    public float aggroDistance = 20f;
     
     [Header("Internal Variables")]
     private float rotProgress = -1f; //Keeps track of rotation progress.
