@@ -26,15 +26,6 @@ public class LevelLoaderScript : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log ("Collided with: " + gameObject.tag);  // important debugging aid!
-        if (gameObject.tag == "sceneTrigger")
-        {
-            trigger = true;
-        }
-    }
-
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));    
