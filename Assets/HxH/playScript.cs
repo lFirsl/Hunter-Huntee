@@ -26,6 +26,8 @@ public class playScript : MonoBehaviour
     [Tooltip("The upper and lower limit of sanity points")]
     public float sanityCD;
     public float currentSanityCD;
+
+    public float damage;
     
     
     [Header("SFX and ANIM")]
@@ -207,14 +209,14 @@ public class playScript : MonoBehaviour
         //throw new NotImplementedException();
     }
     
-    /*private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("projectile"))
         {
             //whoever is working on the HP system, do your thing
             Debug.Log("Player is hit!");
         }
-    }*/
+    }
 
     IEnumerator activateHitbox()
     {

@@ -21,14 +21,18 @@ public class bossScript : MonoBehaviour
     public float circleRadius;
     public Transform sweepPoint;
     public float sweepRad;
+    public float s2Rad;
+    public float s2dmg;
     
 
 
-    public float health = 500f;
+    public float maxhealth = 500f;
+    public float currenthealth;
     
     // Start is called before the first frame update
     void Start()
     {
+        currenthealth = maxhealth;
         player = GameObject.Find("Player");
     }
 
@@ -45,10 +49,12 @@ public class bossScript : MonoBehaviour
         {
             return;
         }
-        if (health <= 250)
+        if (currenthealth <= 250)
         {
             GetComponent<Animator>().SetBool("isStage2", true);
         }
+
+        currenthealth -= dmg;
     }
 
     public void LookTowardsPlayer()
@@ -134,6 +140,19 @@ public class bossScript : MonoBehaviour
         }
     }
 
+    public void Stage2Attack()
+    {
+        Collider[] colInfo = Physics.OverlapSphere(transform.position, s2Rad);
+        foreach (var hitColliders in colInfo)
+        {
+            if (hitColliders.GetComponent<playScript>())
+            {
+                playScript ps = hitColliders.GetComponent<playScript>();
+                ps.ChangeHealth(s2dmg);
+                Debug.Log("Health is changed");
+            }
+        }
+    } 
     
     
     

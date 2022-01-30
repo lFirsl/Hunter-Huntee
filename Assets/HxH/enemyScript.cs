@@ -9,6 +9,8 @@ public class enemyScript : MonoBehaviour
 {
     [Header("Statistics")]
     public float health;
+
+    public float currentHealth;
     public float movementSpeed;
     public float attackInterval;
     public float damage = 20f;
@@ -41,6 +43,7 @@ public class enemyScript : MonoBehaviour
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<playScript>();
         rb = GetComponent<Rigidbody>();
+        currentHealth = health;
     }
 
     // Update is called once per frame
@@ -82,6 +85,12 @@ public class enemyScript : MonoBehaviour
         //transform.rotation = rotation;
         this.transform.rotation = rotation;
     }
+
+    public void TakeDamage(float dmg)
+    {
+        currentHealth -= dmg;
+    }
+    
     
     IEnumerator AttackCoroutine()
     {

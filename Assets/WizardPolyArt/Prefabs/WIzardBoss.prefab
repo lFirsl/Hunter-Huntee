@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 8679002588418095851}
   m_Layer: 0
   m_Name: WIzardBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -723,7 +723,10 @@ MonoBehaviour:
   circleRadius: 5
   sweepPoint: {fileID: 7856676008259579043}
   sweepRad: 10
-  health: 500
+  s2Rad: 10
+  s2dmg: 10
+  maxhealth: 500
+  currenthealth: 0
 --- !u!1 &8679006872769786311
 GameObject:
   m_ObjectHideFlags: 0
