@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 4087478900639949477}
   m_Layer: 0
   m_Name: Pikemen 2.0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -719,10 +719,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  movementSpeed: 200
+  movementSpeed: 10
   attackInterval: 20
   damage: 20
-  attDist: 4
+  attDist: 3
   aggroModifier: 1.5
   dead: 0
   playerPosition: {x: 0, y: 0, z: 0}

@@ -67,10 +67,10 @@ public class enemy_Spike : enemyScript
         Debug.Log("Bullet collision");
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Spikemen collided with Player");
             GameObject parent = other.transform.root.gameObject;
             playScript ps = parent.GetComponent<playScript>();
             if(!ps.aggressive || !ps.attacking) ps.ChangeHealth(spikeDmg);
-            Debug.Log("Spikemen collided with Player");
         }
     }
 }
