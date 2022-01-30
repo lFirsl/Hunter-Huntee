@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class bullet : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 2f;
     public Rigidbody rb;
     public BoxCollider bc;
     public bool activate; //Used to activate the Shoot command when called in rifleman script

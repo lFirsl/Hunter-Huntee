@@ -89,8 +89,8 @@ public class enemy_Rifleman : enemyScript
         Debug.Log("Walking");
         if (currentDistanceFromPlayer >= attDist)
         {
-            rb.AddForce(transform.forward * movementSpeed * aggroModifier);
-            //transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
+            //rb.AddForce(transform.forward * movementSpeed * aggroModifier);
+            transform.position += transform.forward * movementSpeed * aggroModifier * Time.deltaTime;
         }
     }
 
@@ -105,12 +105,14 @@ public class enemy_Rifleman : enemyScript
         if (currentDistanceFromPlayer >= kiteDist)
         {
             //Need to use velocity instead else ignores colliders and everything lol
-            rb.AddForce(transform.forward * movementSpeed * Time.deltaTime);
+            //rb.AddForce(transform.forward * movementSpeed * Time.deltaTime);
+            transform.position += transform.forward * movementSpeed * Time.deltaTime;
         }
 
         if (currentDistanceFromPlayer < kiteDist)
         {
-            rb.AddForce(transform.forward * -movementSpeed * Time.deltaTime);
+            //rb.AddForce(transform.forward * -movementSpeed * Time.deltaTime);
+            transform.position += -transform.forward * movementSpeed * Time.deltaTime;
         }
 
 
