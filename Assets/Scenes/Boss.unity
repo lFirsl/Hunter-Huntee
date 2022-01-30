@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2240,6 +2240,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: audioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
+      propertyPath: sounds.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a36bcab5c176e964da3134fee03d8444, type: 3}
+    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: bangGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
+      propertyPath: sounds.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
+      propertyPath: sounds.Array.data[5].source
+      value: 
+      objectReference: {fileID: 1230398702}
+    - target: {fileID: 6640410804529746487, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
+      propertyPath: sounds.Array.data[5].volume
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670931bbb304a0d42a0a4082fddb288f, type: 3}
 --- !u!1 &798960386
@@ -2625,8 +2649,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013494742}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
-=======
 --- !u!1001 &1047849891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3078,7 +3100,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 898274178908247363, guid: 4d11732a071e4ab4c88fb8756bc09418, type: 3}
   m_PrefabInstance: {fileID: 1290555038}
   m_PrefabAsset: {fileID: 0}
->>>>>>> 72264ca (Boss room props and detailing.)
 --- !u!1 &1451854466
 GameObject:
   m_ObjectHideFlags: 0
