@@ -11,9 +11,7 @@ public class playScript : MonoBehaviour
     public GameObject wolf;
     public GameObject rab;
     public GameObject character;
-    public GameObject hitBoxObject;
-    private BoxCollider hitBox;
-    
+
     [Header("Numbers and State")]
     public float maxHealth = 100f;
     public float currentHealth;
@@ -33,7 +31,12 @@ public class playScript : MonoBehaviour
     [Header("SFX and ANIM")]
     private Animator rabAnim;
     private Animator wolfAnim;
+    public bool attacking;
     public bool walkSound;
+    
+    [Header("Others")]
+    public GameObject hitBoxObject;
+    private BoxCollider hitBox;
     
     public static playScript Instance;
 
@@ -47,6 +50,7 @@ public class playScript : MonoBehaviour
         currentSanityCD = sanityCD;
         aggressive = true;
         walkSound = false;
+        attacking = false;
         rabAnim = rab.GetComponent<Animator>();
         wolfAnim = wolf.GetComponent<Animator>();
         hitBox = hitBoxObject.GetComponent<BoxCollider>();
@@ -181,8 +185,6 @@ public class playScript : MonoBehaviour
         {
             StartCoroutine(activateHitbox());
             wolfAnim.SetTrigger("Attack");
-
-
             //sound system below
             //random number
             System.Random rand = new System.Random();
@@ -217,7 +219,9 @@ public class playScript : MonoBehaviour
     IEnumerator activateHitbox()
     {
         hitBox.enabled = true;
+        attacking = true;
         yield return new WaitForSeconds(1);
+        attacking = false;
         hitBox.enabled = false;
     }
 

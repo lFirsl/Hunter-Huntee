@@ -70,7 +70,7 @@ public class enemy_Spike : enemyScript
         {
             GameObject parent = other.transform.root.gameObject;
             playScript ps = parent.GetComponent<playScript>();
-            if(!ps.aggressive) ps.ChangeHealth(spikeDmg);
+            if(!ps.aggressive || !ps.attacking) ps.ChangeHealth(spikeDmg);
             Debug.Log("Spikemen collided with Player");
         }
     }
