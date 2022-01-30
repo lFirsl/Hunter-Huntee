@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class LevelLoaderScript : MonoBehaviour
 
     public float transitionTime = 1f;
     public Animator transition;
-    
+    public bool trigger = false;
     
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,19 @@ public class LevelLoaderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (trigger)
+        {
+            LoadNextLevel();
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log ("Collided with: " + gameObject.tag);  // important debugging aid!
+        if (gameObject.CompareTag("sceneTrigger"))
+        {
+            trigger = true;
+        }
     }
 
     public void LoadNextLevel()
