@@ -1,0 +1,54 @@
+'Preydator' Assets Licenses
+
+Multiple assets were obtained from the Unity Asset Store and are used under a Standard Unity Assset Store EULA.
+This EULA can be found here: https://unity3d.com/legal/as_terms
+As defined within it, all assets used are 'Non-Restricted'.
+This permits, as explained in Section 2, "END-USER's Rights and Obligations" that:
+"Licensor grants to the END-USER a non-exclusive, worldwide, and perpetual license to the Asset to integrate it 
+only as incorporated and embedded components of electronic applications and digital media and distribute such 
+electronic application and digital media..."
+Also: "Except for services software development kits (“Services SDKs”), END-USERS may modify Assets."
+Other restrictions are specified. Ours is not an SDK, and we have not breached any of the other restrictions.
+
+Models used follow:
+
+"White Rabbit"
+Obtained from: https://assetstore.unity.com/packages/3d/characters/animals/white-rabbit-138709
+Created by Niwashi Games.
+Used under a Standard Unity Asset Store EULA.
+
+"Werewolf Final"
+Obtained from: https://sketchfab.com/3d-models/werewolf-final-2b89eb50883d4f5287b732f697d2d0ca
+Created by ZionE
+Licensed under Creative Commons Attribution 4.0 International.
+The terms of this license can be found here: https://creativecommons.org/licenses/by/4.0
+
+"Battle Wizard Poly Art"
+Obtained from: https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/battle-wizard-poly-art-128097
+Created by Dungeon Mason
+Used under a Standard Unity Asset Store EULA.
+
+"Free Lowpoly Nature Forest"
+Obtained from: https://assetstore.unity.com/packages/3d/environments/landscapes/free-low-poly-nature-forest-205742
+Created by Pure Poly.
+Used under a Standard Unity Asset Store EULA.
+
+"Lowpoly Forest Pack"
+Obtained from: https://assetstore.unity.com/packages/3d/vegetation/trees/lowpoly-forest-pack-21180
+Created by Laufes.
+Used under a Standard Unity Asset Store EULA.
+
+"Low Poly Pack - Environment Lite"
+Obtained from: https://assetstore.unity.com/packages/3d/props/exterior/low-poly-pack-environment-lite-102039
+Created by Solum Night.
+Used under a Standard Unity Asset Store EULA.
+
+"Low Poly Free Dungeon Pack"
+Obtained from: https://assetstore.unity.com/packages/3d/environments/dungeons/low-poly-free-dungeon-pack-191979
+Created by GlassOfCoins.
+Used under a Standard Unity Asset Store EULA.
+
+"FREE Stylised PBR Textures Pack"
+Obtained from: https://assetstore.unity.com/packages/2d/textures-materials/free-stylized-pbr-textures-pack-111778
+Created by Lumo-Art 3D
+Used under a Standard Unity Asset Store EULA.
