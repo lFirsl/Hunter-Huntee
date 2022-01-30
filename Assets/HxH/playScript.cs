@@ -26,6 +26,9 @@ public class playScript : MonoBehaviour
     [Tooltip("The upper and lower limit of sanity points")]
     public float sanityCD;
     public float currentSanityCD;
+    public bool canTransform;
+    public float transformationCD = 4;
+    private float doubletransformationCD;
 
     public float damage;
     
@@ -53,6 +56,8 @@ public class playScript : MonoBehaviour
         aggressive = true;
         walkSound = false;
         attacking = false;
+        canTransform = true;
+        doubletransformationCD = 2 * transformationCD;
         rabAnim = rab.GetComponent<Animator>();
         wolfAnim = wolf.GetComponent<Animator>();
         hitBox = hitBoxObject.GetComponent<BoxCollider>();
@@ -75,7 +80,7 @@ public class playScript : MonoBehaviour
         Motion();
         SanityCheck();
         //Debug.Log(sanityVar);
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E) && canTransform)
         {
             SwitchForm();
         }
@@ -113,8 +118,18 @@ public class playScript : MonoBehaviour
             }
         }
 
-        if (sanityVar > sanityLimit) sanityVar = sanityLimit;
-        else if (sanityVar < -sanityLimit) sanityVar = -sanityLimit;
+        if (sanityVar > sanityLimit)
+        {
+            sanityVar -= 20;
+            transformationCD = doubletransformationCD;
+            SwitchForm();
+        }
+        else if (sanityVar < -sanityLimit)
+        {
+            sanityVar += 20;
+            transformationCD = doubletransformationCD;
+            SwitchForm();
+        }
     }
     
     
@@ -129,6 +144,7 @@ public class playScript : MonoBehaviour
         if(aggressive)FindObjectOfType<audioManager>().Play("intoWolf");
         else if(!aggressive) FindObjectOfType<audioManager>().Play("intoRab");
 
+        StartCoroutine(startCD());
     }
 
     
@@ -174,6 +190,14 @@ public class playScript : MonoBehaviour
         walkSound = true;
         yield return new WaitForSeconds(0.45f);
         walkSound = false;
+    }
+
+    IEnumerator startCD()
+    {
+        canTransform = false;
+        yield return new WaitForSeconds(transformationCD);
+        if (transformationCD >= doubletransformationCD) transformationCD = doubletransformationCD / 2;
+        canTransform = true;
     }
 
     void setAnimation()

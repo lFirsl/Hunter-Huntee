@@ -701,7 +701,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4087478900639949482}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.9607658, y: 1.7365175, z: 4.447399}
@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  currentHealth: 0
   movementSpeed: 5
   attackInterval: 20
   damage: 20
@@ -1243,8 +1244,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 5.8326893}
-  m_Center: {x: 0, y: 0, z: 2.4163444}
+  m_Size: {x: 1, y: 17.336504, z: 5.8326893}
+  m_Center: {x: 0, y: -0.30298948, z: 2.4163444}
 --- !u!1 &4087478901190960559
 GameObject:
   m_ObjectHideFlags: 0

@@ -89,7 +89,8 @@ public class enemyScript : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        currentHealth -= dmg;
+        // currentHealth -= dmg;
+        Destroy(gameObject);
     }
     
     
