@@ -46,9 +46,9 @@ public class enemy_Rifleman : enemyScript
             StartCoroutine(shoot());
             GameObject tmp = Instantiate(bullet);
             bulletScript = tmp.GetComponent<bullet>();
+            bulletScript.speed = bulletSpeed; 
             tmp.transform.position = bulletStartPos.position;
             bulletScript.activate = true;
-            bulletScript.speed = bulletSpeed; 
         }
     }
 

@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class bullet : MonoBehaviour
 {
-    public float speed;
+    public float speed = 10f;
     public Rigidbody rb;
     public BoxCollider bc;
     public bool activate; //Used to activate the Shoot command when called in rifleman script
@@ -21,17 +21,28 @@ public class bullet : MonoBehaviour
         bc = gameObject.GetComponent<BoxCollider>();
         gameObject.GetComponent<BoxCollider>().isTrigger = true;
         rb.angularDrag = 0f;
+        StartCoroutine(selfDestruct());
+
+        //Find and look towards player
+        GameObject target = GameObject.Find("Player");
+        Vector3 playerPosition = target.transform.position;
+        Vector3 direction = playerPosition - transform.position;
+        
+        direction = new Vector3(direction.x, 0.0f, direction.z);
+        Quaternion rotation = Quaternion.LookRotation(direction,Vector3.up);
+        transform.rotation = rotation;
+        
+        //Shoot in the correct direction
+        rb.AddForce(transform.forward * speed * 5, ForceMode.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (activate)
-        {
-            rb.velocity = transform.up * speed;
-        }
-
-        StartCoroutine(selfDestruct());
+        // if (activate)
+        // {
+        //     rb.velocity = transform.up * speed;
+        // }
     }
 
     IEnumerator selfDestruct()
@@ -44,6 +55,11 @@ public class bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Bullet collision");
+        if (other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
         //code for destroying and anim.
     }
 }
