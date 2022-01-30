@@ -202,6 +202,15 @@ public class playScript : MonoBehaviour
         //throw new NotImplementedException();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("projectile"))
+        {
+            //whoever is working on the HP system, do your thing
+            Debug.Log("Player is hit!");
+        }
+    }
+
     IEnumerator activateHitbox()
     {
         hitBox.enabled = true;
